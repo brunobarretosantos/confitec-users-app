@@ -13,7 +13,6 @@ export class UpdateUserComponent implements OnInit {
   public userId: number;
   public user: User = userInit;
 
-
   public errors: string[] = [];
 
   constructor(
@@ -29,6 +28,11 @@ export class UpdateUserComponent implements OnInit {
       this.userService.getUser(this.userId).subscribe(data => {
         this.user = data;
         this.user.dataNascimento = this.datePipe.transform(data.dataNascimento, 'yyyy-MM-dd');
+      },
+      error => {
+        if (error.status === 404) {
+          this.router.navigate(['/users']);
+        }
       });
     });
   }

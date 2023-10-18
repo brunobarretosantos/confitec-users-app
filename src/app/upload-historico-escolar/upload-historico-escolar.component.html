@@ -1,0 +1,20 @@
+<div class="container mt-5">
+  <div *ngIf="user">
+    <h2>Aluno: {{ user.nome }} {{ user.sobrenome }}</h2>
+    <p>Data de Nascimento: {{ formatDate(user.dataNascimento) }}</p>
+    <p>Escolaridade: {{ user.escolaridade.descricao }}</p>
+  </div>
+
+  <form (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+    <div class="mb-3">
+      <h3 for="historicoEscolar" class="form-label">Histórico Escolar</h3>
+      <input type="file" class="form-control" id="historicoEscolar" name="historicoEscolar" (change)="onFileSelected($event)" accept=".pdf, .doc, .docx" [(ngModel)]="file" required>
+    </div>
+    <div *ngIf="errors.length > 0" class="alert alert-danger">
+      <ul>
+        <li *ngFor="let error of errors">{{ error }}</li>
+      </ul>
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </form>
+</div>

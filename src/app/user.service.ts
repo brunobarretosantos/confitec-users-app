@@ -44,4 +44,12 @@ export class UserService {
       })
     );
   }
+
+  uploadHistoricoEscolar(userId: number, formData: FormData): Observable<void> {
+    const url = `${this.apiUrl}/${userId}/upload-historico-escolar`;
+
+    const result = this.http.post<void>(url, formData);
+    console.log(result);
+    return result;
+}
 }

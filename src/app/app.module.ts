@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
+import { UploadHistoricoEscolarComponent } from './upload-historico-escolar/upload-historico-escolar.component';
 
 
 const routes: Routes = [];
@@ -19,7 +20,8 @@ const routes: Routes = [];
     AppComponent,
     UserListComponent,
     AddUserComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    UploadHistoricoEscolarComponent
   ],
   imports: [
     BrowserModule,
