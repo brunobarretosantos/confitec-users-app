@@ -8,6 +8,7 @@
         <th>Nome</th>
         <th>Sobrenome</th>
         <th>Email</th>
+        <th>Ações</th>
       </tr>
     </thead>
     <tbody>
@@ -16,6 +17,9 @@
         <td>{{ user.nome }}</td>
         <td>{{ user.sobrenome }}</td>
         <td>{{ user.email }}</td>
+        <td>
+          <button class="btn btn-primary" (click)="editUser(user.id)">Editar</button>
+        </td>
       </tr>
     </tbody>
   </table>

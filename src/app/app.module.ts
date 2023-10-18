@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { AddUserComponent } from './add-user/add-user.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 
 const routes: Routes = [];
@@ -16,7 +18,8 @@ const routes: Routes = [];
   declarations: [
     AppComponent,
     UserListComponent,
-    AddUserComponent
+    AddUserComponent,
+    UpdateUserComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,9 @@ const routes: Routes = [];
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [
+    DatePipe,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,29 +1,31 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
-import { User } from '../user';
+import { User, UserRequest, userInit } from '../user';
 
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html'
 })
 export class AddUserComponent {
-  user: User = new User();
+  user: User = userInit;
   public errors: string[] = [];
 
   constructor(private userService: UserService, private router: Router) {}
 
   onSubmit() {
-    this.userService.addUser(this.user).subscribe(() => {
+    const userRequest: UserRequest = { ...this.user, escolaridade: this.user.escolaridade.descricao }
+
+    this.userService.addUser(userRequest).subscribe(() => {
       this.router.navigate(['/users']);
     },
-    (error) => {
-      if (error.status === 400) {
-        this.errors = [ error.error ];
-      } else {
-        this.errors = ['Ocorreu um erro ao processar a requisição. Tente novamente mais tarde.'];
+      (error) => {
+        if (error.status === 400) {
+          this.errors = [ error.error ];
+        } else {
+          this.errors = ['Ocorreu um erro ao processar a requisição. Tente novamente mais tarde.'];
+        }
       }
-    }
-  );
+    );
   }
 }
