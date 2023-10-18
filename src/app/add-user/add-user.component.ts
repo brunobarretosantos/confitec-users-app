@@ -14,10 +14,31 @@ export class AddUserComponent {
   constructor(private userService: UserService, private router: Router) {}
 
   onSubmit() {
+    if (!this.user.nome || this.user.nome === '') {
+      this.errors = ['Informe o nome']
+      return
+    }
+
+    if (!this.user.sobrenome || this.user.sobrenome === '') {
+      this.errors = ['Informe o sobrenome']
+      return
+    }
+
+    if (!this.user.email || this.user.email === '') {
+      this.errors = ['Informe o e-mail']
+      return
+    }
+
+    if (!this.user.dataNascimento || this.user.dataNascimento === '') {
+      this.errors = ['Informe a Data de Nascimento']
+      return
+    }
+
     const userRequest: UserRequest = { ...this.user, escolaridade: this.user.escolaridade.descricao }
 
-    this.userService.addUser(userRequest).subscribe(() => {
-      this.router.navigate(['/users']);
+    this.userService.addUser(userRequest).subscribe((response) => {
+      console.log('response', response)
+      this.router.navigate(['/users/', response.id]);
     },
       (error) => {
         if (error.status === 400) {
