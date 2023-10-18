@@ -1,4 +1,21 @@
-<h2>Lista de Usuários</h2>
-<ul>
-  <li *ngFor="let user of users">{{ user.name }}</li>
-</ul>
+<div class="container mt-4">
+  <h2>Lista de Usuários</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Sobrenome</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>{{ user.nome }}</td>
+        <td>{{ user.sobrenome }}</td>
+        <td>{{ user.email }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
