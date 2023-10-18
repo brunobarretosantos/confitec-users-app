@@ -1,1 +1,7 @@
-<p>list-usuarios works!</p>
+<h1>Lista de Usuários</h1>
+<ul>
+  <li *ngFor="let usuario of usuarios">
+    {{ usuario.nome }} {{ usuario.sobrenome }}
+  </li>
+</ul>
+
