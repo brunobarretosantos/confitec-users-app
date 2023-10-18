@@ -35,8 +35,6 @@ export class UploadHistoricoEscolarComponent {
   onSubmit() {
     this.errors = [];
 
-    console.log('this.file', this.file)
-
     if (!this.file || !this.file.name) {
       this.errors = ['Selecione um arquivo válido']
       return

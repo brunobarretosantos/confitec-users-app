@@ -46,10 +46,6 @@ export class UserListComponent implements OnInit {
 
   private deleteUser(userId: number) {
     this.userService.deleteUser(userId).subscribe(
-      () => {
-        console.log(`Usuário excluído com sucesso.`);
-        // Atualize a lista de usuários se necessário
-      },
       (error) => {
         console.error(`Erro ao excluir o usuário ${userId}:`, error);
       }
@@ -65,7 +61,6 @@ export class UserListComponent implements OnInit {
         })
       )
       .subscribe((response) => {
-        console.log('response', response)
         const blob = new Blob([response.body], { type: response.headers.get('content-type') });
         saveAs(blob, `HistoricoEscolar_${userId}.pdf`);
       });

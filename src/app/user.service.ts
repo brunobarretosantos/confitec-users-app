@@ -49,7 +49,6 @@ export class UserService {
     const url = `${this.apiUrl}/${userId}/upload-historico-escolar`;
 
     const result = this.http.post<void>(url, formData);
-    console.log(result);
     return result;
   }
 
