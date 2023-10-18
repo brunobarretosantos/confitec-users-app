@@ -1,0 +1,14 @@
+.header-container {
+  background-color: $custom-blue;
+  color: white; // Adicione a cor do texto desejada
+}
+
+.header-link {
+  color: white; // Adicione a cor do texto desejada
+  text-decoration: none;
+  margin: 0 10px; // Adapte a margem conforme necessário
+}
+
+.header-link:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,16 @@
+// Definindo a tonalidade azul
+$custom-blue: #007bff;
+
+// Estilizando o breadcrumb
+.breadcrumb-item.active {
+  color: $custom-blue;
+}
+
+// Estilizando a lista de usuários
+.user-list-container {
+  background-color: $custom-blue;
+}
+
+.user-list-item {
+  background-color: white;
+}
