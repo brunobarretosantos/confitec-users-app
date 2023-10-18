@@ -1,8 +1,9 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, catchError } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-user-list',
@@ -53,5 +54,20 @@ export class UserListComponent implements OnInit {
         console.error(`Erro ao excluir o usuário ${userId}:`, error);
       }
     );
+  }
+
+  downloadHistoricoEscolar(userId: number) {
+    this.userService.downloadHistoricoEscolar(userId)
+      .pipe(
+        catchError((error) => {
+          console.error(error);
+          return [];
+        })
+      )
+      .subscribe((response) => {
+        console.log('response', response)
+        const blob = new Blob([response.body], { type: response.headers.get('content-type') });
+        saveAs(blob, `HistoricoEscolar_${userId}.pdf`);
+      });
   }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { User, UserRequest } from './user';
 import { Observable, Subject } from 'rxjs';
@@ -51,5 +51,13 @@ export class UserService {
     const result = this.http.post<void>(url, formData);
     console.log(result);
     return result;
-}
+  }
+
+  downloadHistoricoEscolar(userId: number): Observable<HttpResponse<Blob>> {
+    const url = `${this.apiUrl}/${userId}/download-historico-escolar`;
+    return this.http.get(url, {
+      responseType: 'blob',
+      observe: 'response'
+    });
+  }
 }

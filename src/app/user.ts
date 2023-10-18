@@ -5,7 +5,7 @@ export class User {
   email: string;
   dataNascimento: string;
   escolaridade: Escolaridade;
-  historicoEscolar: string;
+  historicoEscolar: HistoricoEscolar;
 }
 
 export class UserRequest {
@@ -22,6 +22,12 @@ export class Escolaridade {
   descricao: string;
 }
 
+export class HistoricoEscolar {
+  id: number;
+  nome: string;
+  formato: string;
+}
+
 export const userInit: User = {
   id: 0,
   nome: '',
@@ -29,5 +35,5 @@ export const userInit: User = {
   email: '',
   dataNascimento: '',
   escolaridade: { id: 0, descricao: '' },
-  historicoEscolar: ''
+  historicoEscolar: { id: 0, nome: '', formato: '' }
 }

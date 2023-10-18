@@ -20,6 +20,9 @@
         <td>
           <button class="btn btn-primary" (click)="editUser(user.id)">Editar</button>
           <button class="btn btn-danger ms-3" (click)="confirmDelete(user.id)">Excluir</button>
+          <div *ngIf="user.historicoEscolar">
+            <button class="btn btn-info ms-3" (click)="downloadHistoricoEscolar(user.id)">Histórico Escolar</button>
+          </div>
         </td>
       </tr>
     </tbody>
